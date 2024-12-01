@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(250, 248, 248);
+}
+
+/* CONTAINER */
+#container {
+  max-width: 1200px;
+  background-color: white;
+  flex: 1;
+  margin: 1rem;
+  padding: 2rem;
+  /* margin: auto 0; */
+}
+
+/* @media screen and (min-width: 768px) {
+  #container {
+    flex: none;
+    width: 80%;
+    padding: 3rem;
+    margin: 0;
+  }
+} */
+
+/* @media screen and (min-width: 1024px) {
+  #container {
+    width: 55%;
+  }
+} */
+
+/* @media screen and (min-width: 1280px) {
+  #container {
+    width: 45%;
+    padding: 4rem;
+  }
+} */
+/* BOGO TITLE */
+.bogo-wrapper {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+.bogo-wrapper > hr {
+  border: 0.9px solid #c8c8c8;
+  flex: 1;
+}
+.bogo-wrapper > span {
+  color: #ff6b82;
+  margin: 0 10px;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* @media screen and (min-width: 768px) {
+  .bogo-wrapper {
+    height: 4rem;
+  }
+  .bogo-title {
+    font-size: 2rem;
+  }
+} */
+
+/* @media screen and (min-width: 1024px) {
+  .bogo-wrapper {
+    height: 3rem;
+  }
+} */
+
+/* BOX CONTAINER */
+#box-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin-top: 8px;
+  position: relative;
+}
+.box-wrapper {
+  border: 2px solid #c8c8c8;
+  font-size: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.box-header > :nth-child(1) {
+  display: flex;
+  column-gap: 10px;
+}
+.box-header > :nth-child(1) > div > div {
+  display: flex;
+  column-gap: 6px;
+}
+
+.box-header > :nth-child(1) > div > span {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* discount container */
+.box-header > :nth-child(1) > div > div > :nth-child(2) {
+  background-color: #ff6b82;
+  padding: 1px 5px;
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.box-header > :nth-child(2) > span {
+  font-weight: 100;
+  font-size: 12px;
+  color: #c8c8c8;
+}
+
+.box-body {
+  display: none;
+  padding: 0.5rem 1rem;
+}
+.box-body > table {
+  /* border: 1px solid black; */
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px; /* Space for the custom arrow */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+}
+
+.custom-select::after {
+  content: "\2193"; /* Unicode for down arrow */
+  font-size: 16px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
