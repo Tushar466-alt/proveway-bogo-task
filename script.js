@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div>
           <h5>${_card.price}</h5>
-          <span>${_card.originalPrice}</span>
+          <del>${_card.originalPrice}</del>
         </div>
       `;
 
@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
               </thead>
               <tbody>
                 ${_card.options
-                  .map(
-                    (option) => `
+        .map(
+          (option) => `
                     <tr>
                     <td>#${option.id}</td>
                     <td>
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </td>
                     </tr>
                     `
-                  )
-                  .join("")}
+        )
+        .join("")}
               </tbody>
             </table>
       `;
