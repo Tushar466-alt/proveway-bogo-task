@@ -1,48 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = [
-    {
-      unit: "1 Unit",
-      discount: "10% Off",
-      price: "$10.00 USD",
-      originalPrice: "$24.00 USD",
-      options: [
-        { id: 1, size: "S", color: "Black" },
-        { id: 2, size: "M", color: "Colour" },
-      ],
-    },
-    {
-      unit: "2 Unit",
-      discount: "20% Off",
-      price: "$18.00 USD",
-      originalPrice: "$24.00 USD",
-      options: [
-        { id: 1, size: "S", color: "Black" },
-        { id: 2, size: "M", color: "Colour" },
-      ],
-    },
-    {
-      unit: "3 Unit",
-      discount: "30% Off",
-      price: "$24.00 USD",
-      originalPrice: "$24.00 USD",
-      options: [
-        { id: 1, size: "S", color: "Black" },
-        { id: 2, size: "M", color: "Colour" },
-      ],
-    },
-  ];
+const cards = [
+  {
+    unit: "1 Unit",
+    discount: "10% Off",
+    price: "$10.00 USD",
+    originalPrice: "$24.00 USD",
+    options: [
+      { id: 1, size: "S", color: "Black" },
+      { id: 2, size: "M", color: "Colour" },
+    ],
+  },
+  {
+    unit: "2 Unit",
+    discount: "20% Off",
+    price: "$18.00 USD",
+    originalPrice: "$24.00 USD",
+    options: [
+      { id: 1, size: "S", color: "Black" },
+      { id: 2, size: "M", color: "Colour" },
+    ],
+  },
+  {
+    unit: "3 Unit",
+    discount: "30% Off",
+    price: "$24.00 USD",
+    originalPrice: "$24.00 USD",
+    options: [
+      { id: 1, size: "S", color: "Black" },
+      { id: 2, size: "M", color: "Colour" },
+    ],
+  },
+];
 
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector("#box-container");
 
   cards.forEach((_card, index) => {
     const boxWrapper = document.createElement("div");
     boxWrapper.classList.add("box-wrapper");
 
-    const boxHeader = document.createElement("div");
-    boxHeader.classList.add("box-header");
-    boxHeader.dataset.index = index;
+    const _head = document.createElement("div");
+    _head.classList.add("box-header");
+    _head.dataset.index = index;
 
-    boxHeader.innerHTML = `
+    _head.innerHTML = `
         <div>
           <input type="radio" name="box" value="box${index}" />
           <div>
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <h5>${_card.unit}</h5>
               <div>${_card.discount}</div>
             </div>
-            <span>Standard price</span>
+            ${index === 0 ? `<span>Standard price</span>` : ""}
           </div>
         </div>
         <div>
@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-    const boxBody = document.createElement("div");
-    boxBody.classList.add("box-body");
-    boxBody.style.display = "none";
-    boxBody.innerHTML = `
+    const _body = document.createElement("div");
+    _body.classList.add("box-body");
+    _body.style.display = "none";
+    _body.innerHTML = `
             <table>
               <thead>
                 <tr>
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   <td>Colour</td>
                 </tr>
               </thead>
-
               <tbody>
                 ${_card.options
                   .map(
@@ -96,25 +95,31 @@ document.addEventListener("DOMContentLoaded", () => {
             </table>
       `;
 
-    boxWrapper.appendChild(boxHeader);
-    boxWrapper.appendChild(boxBody);
+    boxWrapper.appendChild(_head);
+    boxWrapper.appendChild(_body);
     container.appendChild(boxWrapper);
   });
 
-  container.addEventListener("click", function (e) {
+  container.addEventListener("click", (e) => {
     if (e.target.closest(".box-header")) {
-      const boxHeader = e.target.closest(".box-header");
-      const boxIndex = boxHeader.dataset.index;
-      const boxBody = boxHeader.nextElementSibling;
+      const _head = e.target.closest(".box-header");
+      const _body = _head.nextElementSibling;
+      const radioButton = _head.querySelector("input[type='radio']");
+
+      const isBoxBodyVisible = _body.style.display === "block";
+      _body.style.display = isBoxBodyVisible ? "none" : "block";
+      radioButton.checked = !isBoxBodyVisible;
 
       const allBoxBodies = container.querySelectorAll(".box-body");
-      allBoxBodies.forEach(function (body) {
-        if (body !== boxBody) {
+      allBoxBodies.forEach((body) => {
+        if (body !== _body) {
           body.style.display = "none";
+          const radioButtons = body.previousElementSibling.querySelector(
+            "input[type='radio']"
+          );
+          radioButtons.checked = false;
         }
       });
-      boxBody.style.display =
-        boxBody.style.display === "none" ? "block" : "none";
     }
   });
 });
