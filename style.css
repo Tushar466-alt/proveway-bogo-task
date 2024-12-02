@@ -96,7 +96,7 @@ body {
 #box-container {
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
   margin-top: 8px;
   position: relative;
 }
@@ -104,14 +104,12 @@ body {
 @media screen and (min-width: 1024px) {
   #box-container {
     margin-top: 15px;
-    row-gap: 1.5rem;
   }
 }
 
 @media screen and (min-width: 1280px) {
   #box-container {
     margin-top: 20px;
-    row-gap: 2rem;
   }
 }
 .box-wrapper {
