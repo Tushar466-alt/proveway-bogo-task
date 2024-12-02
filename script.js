@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const _body = document.createElement("div");
     _body.classList.add("box-body");
-    _body.style.display = "none";
+    // _body.style.display = "none";
+    _body.style.display = index === 0 ? "block" : "none"; // updated
     _body.innerHTML = `
             <table>
               <thead>
@@ -98,6 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
     boxWrapper.appendChild(_head);
     boxWrapper.appendChild(_body);
     container.appendChild(boxWrapper);
+
+    if (index === 0) {
+      _head.querySelector("input[type='radio']").checked = true;
+    }
   });
 
   container.addEventListener("click", (e) => {
