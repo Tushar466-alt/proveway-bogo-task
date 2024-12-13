@@ -61,8 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const _body = document.createElement("div");
     _body.classList.add("box-body");
-    // _body.style.display = "none";
-    _body.style.display = index === 0 ? "block" : "none"; // updated
+    _body.style.display = index === 0 ? "block" : "none";
     _body.innerHTML = `
             <table>
               <thead>
